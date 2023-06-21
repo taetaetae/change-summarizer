@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-try {
+async function main() {
     const base = core.getInput('base')
     const compare = core.getInput('compare')
     const token = core.getInput('token')
@@ -17,9 +17,6 @@ try {
             const result = JSON.stringify(response.data, undefined, 2);
             console.log(`result : ${result}`)
         });
-
-
-
-} catch (error) {
-    core.setFailed(error.message);
 }
+
+main();
