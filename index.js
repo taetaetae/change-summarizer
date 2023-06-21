@@ -16,8 +16,10 @@ async function main() {
 
     const commits = response.data.commits;
     for (const commit in commits) {
-        console.log(`sha : ${commit.sha}`)
+        console.log(`sha : ${JSON.stringify(commit, undefined, 2)}`)
     }
-
+    const result = JSON.stringify(response.data.commits, undefined, 2);
 }
-main();
+
+
+    main();
