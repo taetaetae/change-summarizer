@@ -12,13 +12,13 @@ try {
     const repository = github.context.payload.repository
     const ownerName = repository.owner.name
     const repositoryName = repository.name;
-    const request = octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
+    octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
         .then(response => {
-            return response.data
+            const result = JSON.stringify(response.data, undefined, 2);
+            console.log(`result : ${result}`)
         });
 
-    const result = JSON.stringify(request, undefined, 2);
-    console.log(`result : ${result}`)
+
 
 } catch (error) {
     core.setFailed(error.message);
