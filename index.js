@@ -28,6 +28,10 @@ octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${c
         })
 
         setTimeout(() => {
-            console.log(pullRequests)
+            const result = []
+            pullRequests.forEach(function(data){
+                result.push(`${repository.html_url}/pull/${data.number} - ${data.title} - @${data.login}`)
+            })
+            console.log(result.join("\n"))
         }, 500)
     })
