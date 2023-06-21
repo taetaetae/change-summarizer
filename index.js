@@ -21,7 +21,7 @@ async function main() {
                 const result = JSON.stringify(response.data, undefined, 2)
                 console.log(`---------\n${result}`)
                 // const result = response.data
-                // console.log(`number : ${result.number}, title : ${result.title}, user.login : ${result.user.login}`)
+                console.log(`number : ${result.number}, title : ${result.title}, user.login : ${result.user}`)
             });
     })
 
