@@ -11,7 +11,7 @@ const octokit = github.getOctokit(token)
 const repository = github.context.payload.repository
 const ownerName = repository.owner.name
 const repositoryName = repository.name
-var pullRequests = new Map()
+const pullRequests = new Map()
 octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
     .then(response => {
         response.data.commits.forEach(function (commit) {
