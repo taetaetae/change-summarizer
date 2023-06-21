@@ -15,13 +15,22 @@ async function main() {
     const response = await octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
 
     let pullRequests = new Map()
-    response.data.commits.forEach(function(commit){
+    response.data.commits.forEach(function (commit) {
         octokit.request(`GET /repos/${ownerName}/${repositoryName}/commits/${commit.sha}/pulls`)
             .then(response => {
-                response.data.forEach(function(pull){
+                response.data.forEach(function (pull) {
                     console.log(`number : ${pull.number}, title : ${pull.title}, user.login : ${pull.user.login}`)
+                    pullRequests.set(pull.number, {
+                        'number': `${pull.number}`,
+                        'title': `${pull.title}`,
+                        'login': `${pull.user.login}`
+                    })
                 });
             });
+    })
+
+    pullRequests.forEach(function(data){
+        console.log(data)
     })
 
 }
