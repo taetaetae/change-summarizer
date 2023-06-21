@@ -18,9 +18,10 @@ async function main() {
     response.data.commits.forEach(function(commit){
         octokit.request(`GET /repos/${ownerName}/${repositoryName}/commits/${commit.sha}/pulls`)
             .then(response => {
-                // const result = JSON.stringify(response.data, undefined, 2)
-                const result = response.data
-                console.log(`number : ${result.number}, title : ${result.title}, user.login : ${result.user.login}`)
+                const result = JSON.stringify(response.data, undefined, 2)
+                console.log(`---------\n${result}`)
+                // const result = response.data
+                // console.log(`number : ${result.number}, title : ${result.title}, user.login : ${result.user.login}`)
             });
     })
 
