@@ -14,14 +14,9 @@ try {
     const ownerName = repository.owner.name
     const repositoryName = repository.name;
 
-    let compareCommits = octokit.rest.compareCommits({
-        ownerName,
-        repositoryName,
-        base,
-        compare,
-    });
+    const request = octokit.request(`GET /${ownerName}/${repositoryName}/compare/${base}...${compare}`);
 
-    const result = JSON.stringify(compareCommits, undefined, 2);
+    const result = JSON.stringify(request, undefined, 2);
     console.log(`result : ${result}`)
 
 } catch (error) {
