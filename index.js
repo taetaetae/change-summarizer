@@ -11,11 +11,18 @@ async function main() {
     const octokit = github.getOctokit(token)
     const repository = github.context.payload.repository
     const ownerName = repository.owner.name
-    const repositoryName = repository.name;
+    const repositoryName = repository.name
     const response = await octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
 
+    let pullRequests = []
     response.data.commits.forEach(function(commit){
-        console.log(`sha : ${commit.sha}`)
+        octokit.request(`GET /repos/${ownerName}/${repositoryName}/commits/${commit.sha}/pulls`)
+            .then(response => {
+                const result = JSON.stringify(response.data, undefined, 2)
+                console.log('---')
+                console.log(result)
+                console.log('---')
+            });
     })
 
 }
