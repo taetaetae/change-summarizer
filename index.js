@@ -26,13 +26,15 @@ async function main() {
                         'login': `${pull.user.login}`
                     })
                 });
+
+                console.log('-----')
+                pullRequests.forEach(function(data){
+                    console.log(data)
+                })
             });
     })
 
-    console.log('-----')
-    pullRequests.forEach(function(data){
-        console.log(data)
-    })
+
 
 }
 
