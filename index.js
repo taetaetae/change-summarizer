@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+
+const pullRequests = new Map()
 async function main() {
     const base = core.getInput('base')
     const compare = core.getInput('compare')
@@ -12,7 +14,6 @@ async function main() {
     const repository = github.context.payload.repository
     const ownerName = repository.owner.name
     const repositoryName = repository.name
-    const pullRequests = new Map()
     await octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
         .then(response => {
              response.data.commits.forEach(function (commit) {
@@ -29,10 +30,9 @@ async function main() {
                     })
             })
         })
-
-
-    console.log('---1--')
-    console.log(pullRequests)
 }
 
 main()
+
+console.log('---1--')
+console.log(pullRequests)
