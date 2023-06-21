@@ -1,9 +1,12 @@
 name: "change-summarizer"
 description: "It summarizes the changes based on the pullRequest for the difference between the two branches."
 inputs:
-  token:
-    description: "Token with permission to github api"
-    required: false
+  base:
+    description: "The branch to receive the merge (e.g. main, develop, etc.)"
+    required: true
+  compare:
+    description: "The branch to compare (e.g. feature-xxx, release-xxx)"
+    required: true
 outputs:
   summery:
     description: "Summary of changes between the two branches"
