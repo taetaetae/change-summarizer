@@ -29,6 +29,7 @@ async function main() {
             });
     })
 
+    console.log('-----')
     pullRequests.forEach(function(data){
         console.log(data)
     })
