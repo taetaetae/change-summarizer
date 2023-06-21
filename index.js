@@ -29,5 +29,5 @@ octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${c
 
         setTimeout(() => {
             console.log(pullRequests)
-        }, 300)
+        }, 500)
     })
