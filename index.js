@@ -10,11 +10,13 @@ try {
 
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     const octokit = github.getOctokit(token)
-    let repository = github.context.payload.repository;
+    const repository = github.context.payload.repository
+    const ownerName = repository.owner.name
+    const repositoryName = repository.name;
 
     let compareCommits = octokit.rest.compareCommits({
-        repository.owner.name,
-        repository.name,
+        ownerName,
+        repositoryName,
         base,
         compare,
     });
