@@ -9,4 +9,4 @@ outputs:
     description: "Summary of changes between the two branches"
 runs:
   using: "node12"
-  main: "dist/index.js"
+  main: "index.js"
