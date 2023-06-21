@@ -25,12 +25,8 @@ octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${c
                             'login': `${pull.user.login}`
                         })
                     })
+                    console.log('---1--')
+                    console.log(pullRequests)
                 })
         })
-
-        console.log('---1--')
-        console.log(pullRequests)
     })
-
-console.log('---2--')
-console.log(pullRequests)
