@@ -18,7 +18,6 @@ octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${c
             octokit.request(`GET /repos/${ownerName}/${repositoryName}/commits/${commit.sha}/pulls`)
                 .then(response => {
                     response.data.forEach(function (pull) {
-                        console.log(`number : ${pull.number}, title : ${pull.title}, user.login : ${pull.user.login}`)
                         pullRequests.set(pull.number, {
                             'number': `${pull.number}`,
                             'title': `${pull.title}`,
@@ -29,7 +28,6 @@ octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${c
         })
 
         setTimeout(() => {
-            console.log('---1--')
             console.log(pullRequests)
-        }, 500)
+        }, 100)
     })
