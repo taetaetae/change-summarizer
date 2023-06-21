@@ -19,9 +19,7 @@ async function main() {
         octokit.request(`GET /repos/${ownerName}/${repositoryName}/commits/${commit.sha}/pulls`)
             .then(response => {
                 const result = JSON.stringify(response.data, undefined, 2)
-                console.log('---')
-                console.log(result)
-                console.log('---')
+                console.log(`number : ${result.number}, title : ${result.title}, user.login : ${result.user.login}`)
             });
     })
 
