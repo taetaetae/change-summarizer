@@ -12,7 +12,7 @@ try {
     const repository = github.context.payload.repository
     const ownerName = repository.owner.name
     const repositoryName = repository.name;
-    const request = octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`);
+    const request = await octokit.request(`GET /repos/${ownerName}/${repositoryName}/compare/${base}...${compare}`)
 
     const result = JSON.stringify(request, undefined, 2);
     console.log(`result : ${result}`)
